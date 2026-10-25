@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 开发包与提交说明
+    url: https://veryy.github.io/flare-plugins/developers/
+    about: 先下载 JS／TS SDK，查看插件创建、签名和提交步骤。

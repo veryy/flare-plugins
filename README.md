@@ -1,6 +1,6 @@
 # flare 插件目录
 
-[浏览插件](https://veryy.github.io/flare-plugins/) · [连接 App](https://veryy.github.io/flare-plugins/connect/)
+[浏览插件](https://veryy.github.io/flare-plugins/) · [连接 App](https://veryy.github.io/flare-plugins/connect/) · [SDK 开发包](https://veryy.github.io/flare-plugins/developers/) · [提交插件／反馈](https://github.com/veryy/flare-plugins/issues/new/choose)
 
 此仓库发布静态网站、签名目录、插件包与公开密钥。App 与网站使用同一份签名目录，插件可独立下载和更新。
 
@@ -16,4 +16,8 @@ SHA-256 公钥指纹：`2f77fb028a693bde3fec910a4a57fdbfda1d7aedb7a49a4e13282ea3
 
 目录序号 6：阅读示例更新至 `1.1.0`，增加本地评论与独立回复分页，不新增网络或账号权限，保留 `1.0.0` 历史版本。评论界面需要支持该能力的 flare 版本，示例发言不来自真实用户或平台。
 
-目录登记发布者公钥并校验包签名；安装时仍需确认权限。私钥与平台账号凭据不属于此仓库。当前由管理员审核后发布，尚无开发者自助上传与审核服务。
+开发页提供独立的 JS／TS SDK 工作区、类型、模板、调试工作台、签名工具、锁定依赖与原创本地阅读示例，SDK／工具采用 MIT。无需访问 App 私有仓库；下载后核对 SHA-256，再解压执行 `npm ci` 与 `npm run check`。开发包 `KIT.json` 记录来源提交与逐文件摘要，根目录 README 提供完整步骤。
+
+插件提交和故障反馈通过本仓库的 GitHub Issue 表单接收，由管理员核实作者身份与公钥、检查包和签名后发布；提交不会自动执行或上线。提交签名插件包和签名 JSON 的公开 HTTPS 地址、作者公钥、分类、版本说明与验证记录。不要上传私钥、Cookie、平台账号或带签名参数的媒体 URL。尚无自助注册、在线上传审核与自动发布服务。
+
+目录登记发布者公钥并校验包签名；安装时仍需确认权限。私钥与平台账号凭据不属于此仓库。SDK 下载与反馈页面更新不改变目录序号和已有插件版本。

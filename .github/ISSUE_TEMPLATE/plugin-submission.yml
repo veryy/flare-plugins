@@ -1,0 +1,52 @@
+name: 提交插件或更新
+description: 提交签名包，管理员核实作者身份与权限后发布。
+title: "[插件提交] "
+body:
+  - type: markdown
+    attributes:
+      value: "提交不会自动上线。只填写公开信息；不要上传作者私钥、平台账号、Cookie 或临时媒体签名。"
+  - type: input
+    id: plugin
+    attributes:
+      label: 插件 ID 与版本
+      placeholder: yourname.source / 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: 作者身份与公开项目地址
+      description: 首次登记需通过公开维护者身份核实公钥；插件 author.id 应与登记身份一致。
+    validations:
+      required: true
+  - type: textarea
+    id: downloads
+    attributes:
+      label: 插件包、签名 JSON、作者公钥
+      description: 提供可公开下载的 HTTPS 地址，并列出包 SHA-256 和作者公钥指纹。不要提供私钥。
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 内容分类
+      options:
+        - 图文与文章
+        - 视频
+        - 多种内容
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: 能力、访问域名与权限
+      description: 说明真实取数方式、登录要求、已测功能、未实现部分及上游许可；示例或合成内容请明确标注。
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: 版本说明与验证记录
+      description: 列出更新内容、SDK／App 兼容范围、开发工具检查及 Android 实测结果。权限变化需单独说明。
+    validations:
+      required: true

@@ -1,0 +1,25 @@
+name: 插件问题反馈
+description: 报告取数、安装、更新、阅读或播放故障。
+title: "[插件问题] "
+body:
+  - type: markdown
+    attributes:
+      value: "请勿提交账号、Cookie、作者私钥或带签名参数的媒体 URL。公开内容可填写稳定内容 ID／原文链接。"
+  - type: input
+    id: versions
+    attributes:
+      label: 插件 ID／版本、flare 版本、Android 版本
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 操作步骤、预期与实际结果
+      description: 包含网络条件（如 Wi-Fi／移动网络）与公开内容 ID。平台拒绝或限流请保留实际错误。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已去除敏感信息的错误与截图
+      description: 可填写结构化错误码；删除账号、Cookie、请求头和临时媒体签名后再提交。
