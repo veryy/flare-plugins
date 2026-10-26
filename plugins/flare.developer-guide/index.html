@@ -1,0 +1,68 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>从模板开始 · flare 插件</title><link rel="stylesheet" href="/flare-plugins/site.css"><script src="/flare-plugins/site.js" defer></script></head><body><header><a class="brand" href="/flare-plugins/">flare<span>●</span></a><nav><a href="/flare-plugins/">发现插件</a><a href="/flare-plugins/developers">开发与发布</a><a href="/flare-plugins/connect/">连接 App</a></nav></header><main><p class="eyebrow">开发者教程 · 示例插件，不代表已接入真实平台</p><h1>从模板开始</h1><p>从公开 SDK 模板构建的搜索与阅读教程，仅返回本地示例，不连接真实平台。</p><p>发布者：<a href="/flare-plugins/?author=flare">flare</a> · 许可：MIT</p><p class="meta">flare.developer-guide · SDK 1 · 作者公钥指纹 <code>471059af2a70417b164442d1bfd34e1bb5909d30d0f782810e78faffda163527</code></p><h2>能力与权限</h2><p>支持：搜索 · 阅读详情</p><ul><li>访问域名：无需网络</li><li>网页运行：不需要 · 平台账号：不需要 · 专属存储：需要</li></ul><h2>使用说明</h2><pre># 从模板开始
+
+这是公开 SDK 开发教程，只提供本地文章，不访问平台、登录或网络。搜索 hello，打开「从模板到 flare」并存到 flare；插件更新后，用原收藏继续打开。
+
+在独立开发包中先执行 `npm run plugin -- new flare.developer-guide plugins/guide`，再用本教程的清单和 TypeScript 源码替换模板。执行 `npm run check`、`npm run plugin -- preview plugins/guide --method search --args &#39;{&quot;query&quot;:&quot;hello&quot;}&#39;`，并用 `npm run plugin -- dev plugins/guide` 在本机工作台调试。打包使用 `npm run plugin -- pack plugins/guide`。
+
+发布自己的插件时，把清单 ID／作者和源码引用中的 flare 命名空间改为自己的身份，用自己的私钥签名，并按网站的提交入口交管理员审核。作者私钥不上传。发布 1.1.0 时，同时修改清单版本与源码 release，保持内容 ID 和 route 不变。
+
+下面附有本版本完整清单和源码，可在公开开发包中复现；较新的开发包也在 recipes/first-plugin 提供相同基础教程。只有搜索与阅读能力，不支持首页推荐，这是允许的最小插件。
+
+## 本版本清单
+
+```json
+{
+  &quot;id&quot;: &quot;flare.developer-guide&quot;,
+  &quot;name&quot;: &quot;从模板开始&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;sdkVersion&quot;: 1,
+  &quot;platform&quot;: &quot;开发者教程&quot;,
+  &quot;description&quot;: &quot;从公开 SDK 模板构建的搜索与阅读教程，仅返回本地示例，不连接真实平台。&quot;,
+  &quot;author&quot;: {
+    &quot;id&quot;: &quot;flare&quot;,
+    &quot;name&quot;: &quot;flare 示例作者&quot;
+  },
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;entry&quot;: &quot;index.ts&quot;,
+  &quot;capabilities&quot;: [
+    &quot;getCapabilities&quot;,
+    &quot;search&quot;,
+    &quot;getDetail&quot;
+  ],
+  &quot;permissions&quot;: {
+    &quot;domains&quot;: [],
+    &quot;storage&quot;: true
+  },
+  &quot;demo&quot;: true
+}
+```
+
+## 本版本源码
+
+```ts
+import { definePlugin, PluginError } from &#39;@flare/sdk&#39;;
+
+const release = &#39;1.0.0&#39;;
+const ref = { pluginId: &#39;flare.developer-guide&#39;, id: &#39;hello&#39;, type: &#39;article&#39; as const, context: { route: &#39;guide-v1&#39; } };
+const summary = { ref, title: &#39;从模板到 flare&#39;, author: { id: &#39;flare&#39;, name: &#39;flare 示例作者&#39; }, excerpt: &#39;搜索 hello，阅读并收藏，再通过网站独立更新插件。&#39; };
+
+export default definePlugin({
+  getCapabilities() { return { methods: [&#39;getCapabilities&#39;, &#39;search&#39;, &#39;getDetail&#39;] }; },
+  async search({ query, cursor }, host) {
+    host.log(&#39;info&#39;, &#39;教程搜索&#39;);
+    return { items: !cursor &amp;&amp; (query.toLowerCase().includes(&#39;hello&#39;) || summary.title.includes(query)) ? [summary] : [], nextCursor: null };
+  },
+  async getDetail(value) {
+    if (value.pluginId !== ref.pluginId || value.id !== ref.id || value.type !== ref.type || value.context?.route !== ref.context.route) {
+      throw new PluginError(&#39;NOT_FOUND&#39;, &#39;教程文章引用无效&#39;);
+    }
+    return { ...summary, blocks: [
+      { type: &#39;heading&#39;, level: 1, text: &#39;从模板到 flare&#39; },
+      { type: &#39;text&#39;, text: `教程插件版本 ${release}` },
+      { type: &#39;text&#39;, text: &#39;内容来自独立 JS 插件；页面、搜索与本机收藏由 flare 提供。&#39; },
+    ] };
+  },
+});
+
+```
+</pre><h2>从文件导入</h2><p>下载所需版本的插件包、作者签名，以及下面的作者公钥。在 flare 的「我的 → 管理插件 → 从文件导入插件」依次选择三个文件，核对作者公开的公钥指纹，再确认能力与访问权限。</p><a href="/flare-plugins/authors/471059af2a70417b164442d1bfd34e1bb5909d30d0f782810e78faffda163527.pem" download>下载作者公钥</a><p class="meta">作者公钥用于校验插件签名，与「连接 App」页面的目录公钥不同。签名校验不能代替作者身份核对。</p><h2>版本记录</h2><article class="release"><h2>1.0.0</h2><p class="meta">2026-10-26T11:45:14.382Z · 7.7 KiB</p><p>从公开 SDK 模板编写的本地搜索与阅读教程，不连接真实平台。</p><p class="meta">SHA-256：<code>94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a</code></p><a class="download" href="/flare-plugins/packages/94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a.flare-plugin" download>下载插件包</a><a href="/flare-plugins/packages/94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a.signature.json" download>下载作者签名</a><details><summary>此版本能力与权限</summary><p>支持：搜索 · 阅读详情</p><ul><li>访问域名：无需网络</li><li>网页运行：不需要 · 平台账号：不需要 · 专属存储：需要</li></ul></details></article></main><footer>插件由各自作者维护。安装前请核对来源与权限；网站不收集平台登录凭据。</footer></body></html>
