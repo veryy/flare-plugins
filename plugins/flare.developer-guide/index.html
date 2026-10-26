@@ -14,7 +14,7 @@
 {
   &quot;id&quot;: &quot;flare.developer-guide&quot;,
   &quot;name&quot;: &quot;从模板开始&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;version&quot;: &quot;1.1.0&quot;,
   &quot;sdkVersion&quot;: 1,
   &quot;platform&quot;: &quot;开发者教程&quot;,
   &quot;description&quot;: &quot;从公开 SDK 模板构建的搜索与阅读教程，仅返回本地示例，不连接真实平台。&quot;,
@@ -42,7 +42,7 @@
 ```ts
 import { definePlugin, PluginError } from &#39;@flare/sdk&#39;;
 
-const release = &#39;1.0.0&#39;;
+const release = &#39;1.1.0&#39;;
 const ref = { pluginId: &#39;flare.developer-guide&#39;, id: &#39;hello&#39;, type: &#39;article&#39; as const, context: { route: &#39;guide-v1&#39; } };
 const summary = { ref, title: &#39;从模板到 flare&#39;, author: { id: &#39;flare&#39;, name: &#39;flare 示例作者&#39; }, excerpt: &#39;搜索 hello，阅读并收藏，再通过网站独立更新插件。&#39; };
 
@@ -65,4 +65,4 @@ export default definePlugin({
 });
 
 ```
-</pre><h2>从文件导入</h2><p>下载所需版本的插件包、作者签名，以及下面的作者公钥。在 flare 的「我的 → 管理插件 → 从文件导入插件」依次选择三个文件，核对作者公开的公钥指纹，再确认能力与访问权限。</p><a href="/flare-plugins/authors/471059af2a70417b164442d1bfd34e1bb5909d30d0f782810e78faffda163527.pem" download>下载作者公钥</a><p class="meta">作者公钥用于校验插件签名，与「连接 App」页面的目录公钥不同。签名校验不能代替作者身份核对。</p><h2>版本记录</h2><article class="release"><h2>1.0.0</h2><p class="meta">2026-10-26T11:45:14.382Z · 7.7 KiB</p><p>从公开 SDK 模板编写的本地搜索与阅读教程，不连接真实平台。</p><p class="meta">SHA-256：<code>94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a</code></p><a class="download" href="/flare-plugins/packages/94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a.flare-plugin" download>下载插件包</a><a href="/flare-plugins/packages/94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a.signature.json" download>下载作者签名</a><details><summary>此版本能力与权限</summary><p>支持：搜索 · 阅读详情</p><ul><li>访问域名：无需网络</li><li>网页运行：不需要 · 平台账号：不需要 · 专属存储：需要</li></ul></details></article></main><footer>插件由各自作者维护。安装前请核对来源与权限；网站不收集平台登录凭据。</footer></body></html>
+</pre><h2>从文件导入</h2><p>下载所需版本的插件包、作者签名，以及下面的作者公钥。在 flare 的「我的 → 管理插件 → 从文件导入插件」依次选择三个文件，核对作者公开的公钥指纹，再确认能力与访问权限。</p><a href="/flare-plugins/authors/471059af2a70417b164442d1bfd34e1bb5909d30d0f782810e78faffda163527.pem" download>下载作者公钥</a><p class="meta">作者公钥用于校验插件签名，与「连接 App」页面的目录公钥不同。签名校验不能代替作者身份核对。</p><h2>版本记录</h2><article class="release"><h2>1.1.0</h2><p class="meta">2026-10-26T12:03:30.251Z · 7.7 KiB</p><p>教程正文更新为 1.1.0，保持原内容 ID 与上下文；用于验证原收藏继续阅读，App 无需重装。</p><p class="meta">SHA-256：<code>382351b5acfed252bd73b8645490d23412d7d36272169ac7bf214e0757b04f6f</code></p><a class="download" href="/flare-plugins/packages/382351b5acfed252bd73b8645490d23412d7d36272169ac7bf214e0757b04f6f.flare-plugin" download>下载插件包</a><a href="/flare-plugins/packages/382351b5acfed252bd73b8645490d23412d7d36272169ac7bf214e0757b04f6f.signature.json" download>下载作者签名</a><details><summary>此版本能力与权限</summary><p>支持：搜索 · 阅读详情</p><ul><li>访问域名：无需网络</li><li>网页运行：不需要 · 平台账号：不需要 · 专属存储：需要</li></ul></details></article><article class="release"><h2>1.0.0</h2><p class="meta">2026-10-26T11:45:14.382Z · 7.7 KiB</p><p>从公开 SDK 模板编写的本地搜索与阅读教程，不连接真实平台。</p><p class="meta">SHA-256：<code>94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a</code></p><a class="download" href="/flare-plugins/packages/94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a.flare-plugin" download>下载插件包</a><a href="/flare-plugins/packages/94beb1bfd902586450d3c2c6217491ab7405d6d7d47d22c717f1f82b7e9e7b1a.signature.json" download>下载作者签名</a><details><summary>此版本能力与权限</summary><p>支持：搜索 · 阅读详情</p><ul><li>访问域名：无需网络</li><li>网页运行：不需要 · 平台账号：不需要 · 专属存储：需要</li></ul></details></article></main><footer>插件由各自作者维护。安装前请核对来源与权限；网站不收集平台登录凭据。</footer></body></html>
